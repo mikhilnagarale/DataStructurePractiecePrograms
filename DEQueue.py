@@ -17,8 +17,8 @@ class DEQueue:
         else:
             return False
 
-    def get_size(self):
-        return self.rear-self.front
+    def print_size(self):
+        print("Queue size is = " + str(self.rear-self.front))
 
     def get_front(self):
         return self.queue[self.front]
@@ -57,4 +57,43 @@ class DEQueue:
             self.queue[self.front] = 0
             self.front = self.front + 1
 
+    def print_queue(self):
+        value = ""
+        for i in range(self.rear - 1,self.front - 1, -1):
+            delimiter = "-->"
+            if i == self.front:
+                delimiter = ""
+            value = value + str(self.queue[i]) + delimiter
+        print (value)
 
+
+def main():
+    dq = DEQueue(8)
+    dq.delete_from_back()
+    dq.delete_from_front()
+    dq.print_queue()
+    dq.print_size()
+    dq.insert_at_back(1)
+    dq.insert_at_back(2)
+    dq.insert_at_front(8)
+    dq.print_queue()
+    dq.print_size()
+    dq.insert_at_back(3)
+    dq.insert_at_back(4)
+    dq.insert_at_back(5)
+    dq.insert_at_front(7)
+    dq.insert_at_front(6)
+    dq.print_queue()
+    dq.print_size()
+    dq.insert_at_back(-1)
+    dq.insert_at_front(-2)
+    dq.delete_from_front()
+    dq.delete_from_front()
+    dq.print_queue()
+    dq.delete_from_back()
+    dq.delete_from_back()
+    dq.print_queue()
+    dq.print_size()
+
+if __name__ == "__main__":
+    main()
