@@ -43,6 +43,12 @@ class Queue:
     def get_size(self):
         return self.rear - self.front
 
+    def print_queue(self):
+        value = ''
+        for i in range(self.front,self.rear):
+            value = value + str(self.queue[i]) + "\t"
+        print (value)
+
 
 def main():
     q = Queue(7)
