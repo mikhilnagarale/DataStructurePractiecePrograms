@@ -24,7 +24,7 @@ class DEQueue:
         return self.queue[self.front]
 
     def get_rear(self):
-        return self.queue[self.rear]
+        return self.queue[self.rear - 1]
 
     def insert_at_back(self,element):
         if self.rear == self.arraySize:

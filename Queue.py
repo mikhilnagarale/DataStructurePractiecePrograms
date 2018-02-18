@@ -35,10 +35,10 @@ class Queue:
 
 
     def get_front(self):
-        return self.front
+        return self.queue[self.front]
 
     def get_rear(self):
-        return self.rear
+        return self.queue[self.rear - 1]
 
     def get_size(self):
         return self.rear - self.front
