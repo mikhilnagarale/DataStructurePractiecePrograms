@@ -36,7 +36,7 @@ class Queue:
         value = ''
         for i in range(self.front,self.rear):
             value = value + str(self.queue[i]) + "\t"
-        print (self.queue[i])
+        print (value)
 
 
     def get_front(self):
