@@ -33,8 +33,10 @@ class Queue:
             self.front = self.front + 1
 
     def print_queue(self):
+        value = ''
         for i in range(self.front,self.rear):
-            print (self.queue[i])
+            value = value + str(self.queue[i]) + "\t"
+        print (self.queue[i])
 
 
     def get_front(self):
