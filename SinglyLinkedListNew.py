@@ -71,7 +71,9 @@ class LinkedList:
         third = self.head
         if first.next is not None:
             second = first.next
+            #Below case is only for first Node
             first.next = None
+            
         if second.next is not None:
             third = second.next
             
