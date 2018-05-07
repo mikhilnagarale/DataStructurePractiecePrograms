@@ -27,7 +27,7 @@ class LinkedList:
             print('LinkedList is empty')
         else:
             curr = self.head
-            while curr.data != data or curr.next == None:
+            while curr.data != data and curr.next != None:
                 curr = curr.next
             if curr.data == data:
                 return curr
@@ -38,11 +38,20 @@ class LinkedList:
         '''Find the element & then remove it'''
         prev = self.head
         curr = self.head
-        while curr.data != data or curr.next == None:
+        while curr.data != data and curr.next != None:
             prev = curr
             curr = curr.next
+            #print('inside loop')
+            #print (data,curr.data)
+        #Below conditionincludes removal of head element, removl of middle & last element,
+        #removal of element in one node list & removal of non existing element. :-)
         if curr.data == data:
-            prev.next = curr.next
+            if self.head.data != data:
+                prev.next = curr.next
+            else:
+                self.head = curr.next
+        else:
+            print ('Element {data} does not exist!'.format(data=data))
         
     def __repr__(self):
         delimiter = '-->'
@@ -53,13 +62,6 @@ class LinkedList:
             curr = curr.next
         value = value + str(curr.data)    
         return value
-            
-        
-            
-        
-                
-            
-            
         
 if __name__ == "__main__":
     x = Node(10)
@@ -68,6 +70,16 @@ if __name__ == "__main__":
     myList.addElement(10)
     myList.addElement(20)
     myList.addElement(30)
+    myList.addElement(40)
+    myList.addElement(50)
+    print(myList)
+    myList.removeElement(30)
+    print(myList)
+    myList.removeElement(50)
+    print(myList)
+    myList.removeElement(10)
+    print(myList)
+    myList.removeElement(100)
     print(myList)
 
     
