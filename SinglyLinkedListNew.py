@@ -62,6 +62,40 @@ class LinkedList:
             curr = curr.next
         value = value + str(curr.data)    
         return value
+            
+        
+    def reverseList(self):
+        print('inside reverseList')
+        first = self.head
+        second = self.head
+        third = self.head
+        if first.next is not None:
+            second = first.next
+            first.next = None
+        if second.next is not None:
+            third = second.next
+            
+            
+        print ('first = {first.data} second = {second.data} third = {third.data}'.format(first=first,second=second,third=third))
+        while third.next is not None:     
+            #Changing pointers
+            
+            second.next = first
+            first = second
+            second = third
+            third = third.next
+            print ('first = {first.data} second = {second.data} third = {third.data}'.format(first=first,second=second,third=third))
+                
+        if third.next is None:
+            second.next = first
+            third.next = second
+            self.head = third
+            #print('head= {self.head.data}'.format(self=self))
+            #print('head.next= {self.head.next}'.format(self=self))
+            #print('head.next.next= {self.head.next.next}'.format(self=self))
+        
+            
+            
         
 if __name__ == "__main__":
     x = Node(10)
@@ -73,6 +107,8 @@ if __name__ == "__main__":
     myList.addElement(40)
     myList.addElement(50)
     print(myList)
+    myList.reverseList()
+    print(myList)
     myList.removeElement(30)
     print(myList)
     myList.removeElement(50)
@@ -81,5 +117,10 @@ if __name__ == "__main__":
     print(myList)
     myList.removeElement(100)
     print(myList)
-
-    
+    myList.addElement(10)
+    myList.addElement(20)
+    myList.addElement(30)
+    myList.addElement(40)
+    myList.addElement(50)
+    print(myList)
+        
