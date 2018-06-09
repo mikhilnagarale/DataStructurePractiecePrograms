@@ -27,18 +27,77 @@ class DLL:
                 curr = curr.next
             display = display + str(curr)    
         return display
-    
-    #def insertAfter(self,currValue, newValue):
-    #def insertBefore(self,currValue, newValue):
+
     def insertBegining(self,value):
         temp = Node(value)
-        temp.next = self.head
-        self.head = temp
+        if self.head is not None:
+            temp.next = self.head
+            self.head.prev = temp
+            
+        self.head = temp        
+        
         if self.rear is None:
             self.rear = self.head
             
-    #def insertEnd(self,value):
-    #def remove(self,value):
+    def insertEnd(self,value):
+        if self.head is None:
+            self.insertBegining(value)
+        else:
+            temp = Node(value)
+            curr = self.rear
+            curr.next = temp
+            temp.prev = curr
+            self.rear = temp
+            
+    
+    def insertAfter(self,currValue, newValue):
+        if self.head is not None:
+            curr = self.head
+            keyCapture = False
+            temp = Node(newValue)
+            while curr.next is not None and keyCapture is False:
+                print("Currently Lookig at element " + str(curr.data))
+                if curr.data == currValue:
+                    keyCapture = True
+                    temp.next = curr.next
+                    curr.next.prev = temp
+                    curr.next = temp
+                    temp.prev = curr
+                curr = curr.next   
+            if keyCapture is False:
+                print("Given elment "+ str(currValue) + " does not exist in list. Appending new element at the end of list!")
+                self.insertEnd(newValue)                
+        else:
+            self.insertBegining(newValue)
+    
+    def insertBefore(self,currValue, newValue):
+        if self.head is not None:
+            curr = self.rear
+            temp =  Node(newValue)
+            keyCapture = False
+            while curr.prev is not None and keyCapture is False:
+                print("checking element " + str(curr.data))
+                if curr.data == currValue:
+                    keyCapture = True
+                    temp.prev = curr.prev
+                    curr.prev.next = temp
+                    curr.prev = temp
+                    temp.next = curr
+                curr = curr.prev
+            if keyCapture is False:
+                print ("Your entered element "+ str(currValue) + " odes not exist in List! Append the element in the begining!")
+                self.insertBegining(newValue)
+        else:
+            insertBegining(newValue)
+        
+    
+    def remove(self,value):
+        if self.head is None:
+            print ("List is empty!")
+        else:
+            keyCapture = False
+            curr = self.head
+            
     
     
 if __name__ == "__main__":
@@ -48,4 +107,18 @@ if __name__ == "__main__":
     myList.insertBegining(5)
     myList.insertBegining(4)
     myList.insertBegining(3)
+    myList.insertBegining(2)
+    myList.insertBegining(1)
+    myList.insertBegining(0)
+    print ("Executing insertAfter")
+    myList.insertAfter(4,10)
+    print ("Executing insertAfter")
+    myList.insertAfter(9,9)
+    print(myList)
+    print ("Executing insertBefore")
+    myList.insertBefore(4,7)
+    print(myList)
+    myList.insertAfter(7,0)
+    print(myList)
+    myList.insertBefore(-1,-1)
     print(myList)
