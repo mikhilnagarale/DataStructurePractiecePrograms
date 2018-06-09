@@ -97,7 +97,21 @@ class DLL:
         else:
             keyCapture = False
             curr = self.head
-            
+            while curr.next is not None and keyCapture == False:
+                print("Currently looking at element " + str(curr.data))
+                if curr.data == int(value):
+                    keyCapture = True
+                    #break - Is's not a good programming practiece to use break & continue control construct
+                print ("keyCapture = " + str(keyCapture)) 
+                #To avoid using break construct
+                if keyCapture == False:
+                    curr = curr.next
+            if keyCapture is False:
+                print ("Element " + str(value) + " does not exist!")
+            else:
+                curr.prev.next = curr.next
+                curr.next.prev = curr.prev
+                
     
     
 if __name__ == "__main__":
@@ -121,4 +135,6 @@ if __name__ == "__main__":
     myList.insertAfter(7,0)
     print(myList)
     myList.insertBefore(-1,-1)
+    print(myList)
+    myList.remove(4)
     print(myList)
