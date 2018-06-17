@@ -1,4 +1,3 @@
-#!/usr/bin/python
 class Node:
     def __init__(self,data):
         self.left = None
@@ -17,7 +16,20 @@ class Node:
                 self.right = Node(data)
             else:
                 self.right.insert(data)
-                
+     
+    def findval(self,val):
+        if val < self.data:
+            if self.left is None:
+                print ('value '+str(val)+' is not found')
+            else:
+                self.left.findval(val)
+        elif val > self.data:
+            if self.right is None:
+                print ('value '+str(val)+' is not found')
+            else:
+                self.right.findval(val)
+        else:
+            print ('value '+str(val)+' is found')
         
     def PrintTree(self):
         if self.left:
@@ -34,3 +46,5 @@ root.insert(13)
 root.insert(6)
 root.insert(9)
 root.PrintTree()
+root.findval(11)
+root.findval(10)
