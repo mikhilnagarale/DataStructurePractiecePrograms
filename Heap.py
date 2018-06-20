@@ -12,3 +12,10 @@
 #Lower memory usage (no need to store three pointers for every element of the heap).
 #Easier memory management (just one object allocated, rather than N).
 #Better locality of reference (the items in the heap are relatively close together in memory rather than scattered wherever the allocator put them).
+#Why Binary Search Tree is not stored in array-
+#Binary search tree is use for fastr searching & storing the elements in sorted order. 
+#If we store the BST in arry then it won't be able to store the elements in sorted order using same logic as childerns: 2K,2K+1.
+#There will be additional overhead to store the elements ingiven specific order.
+#The reason for storing the Heap (min/max) in array is that array indexes will natuaraly act as priority maintanance & we don't need to keep prority explicitly.
+#Only thing we need to consider is every parent should be either greater than (max heap) child or less than (min heap) child.
+#Hence different datastructure are used to store heap(array) and BST(pointer based nodes) .
