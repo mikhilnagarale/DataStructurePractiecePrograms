@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#Ref: https://cs.stackexchange.com/questions/41719/the-most-appropriate-way-to-implement-a-heap-is-with-an-array-rather-than-a-link
 #Question- Why Heap is stored in arry . Why Linked list or any other data structure like pointer based nodes used to store Heap?
 #Why Binary search tree is not stored in Array since heap & binary search tree both are trees?
 #ANS-
