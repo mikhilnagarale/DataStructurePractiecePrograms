@@ -1,6 +1,10 @@
 #!/usr/bin/python
-#Ref: https://cs.stackexchange.com/questions/41719/the-most-appropriate-way-to-implement-a-heap-is-with-an-array-rather-than-a-link
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Ref - Why different data structure?: https://cs.stackexchange.com/questions/41719/the-most-appropriate-way-to-implement-a-heap-is-with-an-array-rather-than-a-link
+#Ref - How to implement Heap : http://interactivepython.org/courselib/static/pythonds/Trees/BinaryHeapImplementation.html
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Question- Why Heap is stored in arry . Why Linked list or any other data structure like pointer based nodes used to store Heap?
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Why Binary search tree is not stored in Array since heap & binary search tree both are trees?
 #ANS-
 #It doesn't make any sense at all to implement a heap as a linked list. Heaps are inherently binary trees. 
@@ -20,3 +24,4 @@
 #The reason for storing the Heap (min/max) in array is that array indexes will natuaraly act as priority maintanance & we don't need to keep prority explicitly.
 #Only thing we need to consider is every parent should be either greater than (max heap) child or less than (min heap) child.
 #Hence different datastructure are used to store heap(array) and BST(pointer based nodes) .
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------
