@@ -1,0 +1,11 @@
+XML-
+XML file has below properties-
+1)Key Value formatted elements - Easy for quick Search
+2)Hierarchy /  sequence / dependency is maintained   - Hense used in many application like -
+Usage-
+Scheduling dependency - ozie,Control-M
+Property files - Everywhere windows,Unix most of the application uses .xml files to maintain properties.
+package depedency - Maven, Gradel, ANT, etc for package dependency
+
+Another benifit is you can easily parse the xml structure & convert it to Tabular form if you're aware of xml structure.
+Also while sending data online xml file is used since we can get mapping of data in XML with UI objects like Textbox, Dropdown List, etc and this parsing is quick. (Sometimes JSON is used as well in some cases).
