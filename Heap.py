@@ -34,42 +34,59 @@ class Heap:
     def __repr__(self):
         return str(self.heapList)
     
+    #In this method we compare child element with it's parent and push child to higher/up level based on heapType
     def pushUp(self,index):
         while index // 2 > 0:
             #Comparing newly added leaf element with it's parent node
-            if self.heapList[index//2] > self.heapList[index]:
+            if self.heapList[index//2] > self.heapList[index] and self.heapType == 'min':
                 temp = self.heapList[index//2]
                 self.heapList[index//2] = self.heapList[index]
                 self.heapList[index] = temp
+            if self.heapList[index//2] < self.heapList[index] and self.heapType == 'max':
+                temp = self.heapList[index//2]
+                self.heapList[index//2] = self.heapList[index]
+                self.heapList[index] = temp    
             index = index//2
-
-    def getMinChild(self,index):
+            
+    #This method will return appropriate index of child element based on heapType
+    def getChild(self,index):
         if self.heapsize == 2*index:
-            print('mc='+str(2*index))
-            return 2*index
-        elif self.heapList[2*index] < self.heapList[2*index+1]:
-            print('mc='+str(2*index))
+            print('heapsize='+str(self.heapsize)+' mc='+str(2*index))
             return 2*index
         else:
-            print('mc='+str(2*index+1))
-            return 2*index+1
-        
+            if self.heapType == 'min':
+                if self.heapList[2*index] < self.heapList[2*index+1]:
+                    return 2*index
+                else:
+                    return 2*index+1
+            else:
+                if self.heapList[2*index] > self.heapList[2*index+1]:
+                    return 2*index
+                else:
+                    return 2*index+1
+                
+    #In this method we compare Parent with it's child elements and push Parent down by comparing between it's child based on heapType.
     def pushDown(self,index):
         while self.heapsize >= 2*index:
-            mc = self.getMinChild(index)
-            if self.heapList[index] > self.heapList[mc]:
+            mc = self.getChild(index)
+            if self.heapList[index] > self.heapList[mc] and self.heapType == 'min':
                 temp = self.heapList[mc]
                 self.heapList[mc] = self.heapList[index]
                 self.heapList[index] = temp
                 print(str(self.heapList))
+            if self.heapList[index] < self.heapList[mc] and self.heapType == 'max':
+                temp = self.heapList[mc]
+                self.heapList[mc] = self.heapList[index]
+                self.heapList[index] = temp
+                print(str(self.heapList))                
             index = mc
-            print ('heapseze='+str(self.heapsize)+' index='+str(index))
+            print ('heapsize='+str(self.heapsize)+' index='+str(index))
             
         
         
         
     def delete(self):
-        print("Deleting the minimum element")
+        print("Deleting the Top element")
         print(str(self.heapList))
         temp = self.heapList[1]
         self.heapList[1] = self.heapList[self.heapsize]
@@ -78,10 +95,11 @@ class Heap:
         self.heapsize = self.heapsize - 1
         self.pushDown(1)
         
-    def buildHeap(self,sampleList):
+    def buildHeap(self,sampleList,heapType):
         index = len(sampleList)//2
         self.heapsize = len(sampleList)
         self.heapList = [0]+sampleList
+        self.heapType = heapType
         while index > 0:
             print ('index='+str(index))
             self.pushDown(index)
@@ -94,7 +112,8 @@ class Heap:
         self.pushUp(self.heapsize)
 
 if __name__=="__main__":
-    myHeap = Heap('m')        
+    print('-->Testing min heap'+"\n")
+    myHeap = Heap('min')        
     print (myHeap)
     myHeap.insert(20)
     myHeap.insert(10)
@@ -106,10 +125,31 @@ if __name__=="__main__":
     myHeap.insert(17)
     myHeap.insert(4)
     print(myHeap)
+    print("\n"+'-->Testing Element deletion in min heap'+"\n")
     myHeap.delete()
     print(myHeap)
+    print("\n"+'-->Testing max heap'+"\n")
+    myHeap = Heap('max')        
+    print (myHeap)
+    myHeap.insert(20)
+    myHeap.insert(10)
+    myHeap.insert(15)
+    myHeap.insert(13)
+    myHeap.insert(9)
+    print (myHeap)
+    myHeap.insert(25)
+    myHeap.insert(17)
+    myHeap.insert(4)
+    print(myHeap)
     myList = [9, 5, 6, 2, 3]
-    myHeap.buildHeap(myList)
+    print("\n"+'-->Testing Element deletion in max heap'+"\n")
+    myHeap.delete()
+    print(myHeap)
+    print("\n"+'-->Testing the building of min heap'+"\n")
+    myHeap.buildHeap(myList,'min')
+    print(myHeap)
+    print("\n"+'-->Testing the building of max heap'+"\n")
+    myHeap.buildHeap(myList,'max')
     print(myHeap)
 
     
