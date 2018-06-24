@@ -96,7 +96,9 @@ class Heap:
         self.pushDown(1)
         
     def buildHeap(self,sampleList,heapType):
-        #We can also insert the elements in list in sequential one by one in heap (It's an computationally lengthy approach).
+        #This is an optimized approach
+        #We're considering index at mid since after mid index there will be only childrens of parents till mid index.
+        #This childrens we can consider in comparison if we use pushDown() method (Note- Since this method is comparing current element with it's childs.)        
         index = len(sampleList)//2
         self.heapsize = len(sampleList)
         self.heapList = [0]+sampleList
@@ -106,7 +108,55 @@ class Heap:
             self.pushDown(index)
             index = index - 1
         
-    
+    def testHeapApproach(self,sampleList,heapType):
+        print('Approach 1- Top to down 1->n pushUp()')
+        index = 1
+        self.heapsize = len(sampleList)
+        self.heapList = [0]+sampleList
+        self.heapType = heapType
+        while index <= self.heapsize:
+            print ('index='+str(index))
+            self.pushUp(index)
+            index = index + 1
+        print(str(self.heapList))
+        #This approach is not working since once iteration has come down from above level to below level then there is no way to check back.
+        #If we compare this approach with Approach one then there even though we're going top down still method is pushUp which is iteratevely
+        #checking child elements & it's ending at level 1 which is the root where as pushDown() menthod is not ending in all leaf nodes 
+        #rather it's ending in any one of the leaf node. Hense the safest approach is Bottom Up n->1 / Top Down 1-> n with pushUp mentod.
+        #but in buildHeap()  methos we're using the optimized approach of bottomUp & pushDown since it has lowest comparison iteration.
+
+        print('Approach 2- Top to down 1->n pushDown()')
+        index = 1
+        self.heapsize = len(sampleList)
+        self.heapList = [0]+sampleList
+        self.heapType = heapType
+        while index <= self.heapsize:
+            print ('index='+str(index))
+            self.pushDown(index)
+            index = index + 1
+        print(str(self.heapList))            
+        print('Approach 3- Bottom to up n->1 pushUp()')
+        index = len(sampleList)
+        self.heapsize = len(sampleList)
+        self.heapList = [0]+sampleList
+        self.heapType = heapType
+        while index > 0:
+            print ('index='+str(index))
+            self.pushUp(index)
+            index = index - 1
+        print(str(self.heapList))
+        print('Approach 4- Bottom to up n->1 pushDown()')
+        index = len(sampleList)
+        self.heapsize = len(sampleList)
+        self.heapList = [0]+sampleList
+        self.heapType = heapType
+        while index > 0:
+            print ('index='+str(index))
+            self.pushDown(index)
+            index = index - 1
+        print(str(self.heapList))            
+
+            
     def insert(self,val):
         self.heapList.append(val)
         self.heapsize = self.heapsize + 1
@@ -152,5 +202,8 @@ if __name__=="__main__":
     print("\n"+'-->Testing the building of max heap'+"\n")
     myHeap.buildHeap(myList,'max')
     print(myHeap)
+    print("\n"+'-->Testing the building of min heap'+"\n")
+    myHeap.testHeapApproach(myList,'min')
+
 
     
