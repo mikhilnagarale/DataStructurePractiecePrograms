@@ -96,6 +96,7 @@ class Heap:
         self.pushDown(1)
         
     def buildHeap(self,sampleList,heapType):
+        #We can also insert the elements in list in sequential one by one in heap (It's an computationally lengthy approach).
         index = len(sampleList)//2
         self.heapsize = len(sampleList)
         self.heapList = [0]+sampleList
