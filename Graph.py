@@ -133,5 +133,13 @@ if __name__ == "__main__":
             print("%s,%s,%d" % (v.id,connVertex,v.getWeight(connVertex)))
           
         
+    #Checking Edge Weight update     
+    myGraph.addEdge('A','C',29)    
+    
+    for v in myGraph:
+        #print(v)
+        #print(type(v))
+        for connVertex in v.getConnections():
+            print("%s,%s,%d" % (v.id,connVertex,v.getWeight(connVertex)))
         
     
