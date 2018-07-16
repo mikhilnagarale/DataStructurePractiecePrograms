@@ -31,6 +31,7 @@ class Vertex:
 
     def addNeighbour(self,nbrVertex,weight=0):
         #if nbrVertex not in self.connectedTo.keys():
+        #print ('inside addNeighbour')
         self.connectedTo[nbrVertex] = weight
         
     def getConnections(self):
@@ -87,8 +88,13 @@ class Graph:
     #Hense we're defining __iter__ method
     #Use-  Eg- [x for x in graph]
     def __iter__(self):
+        print(type(iter(self.vertexList.values())))
         return iter(self.vertexList.values())
     
+    def getNextVertex(self):
+        for vertex in self.vertexList.values():
+            yield vertex
+            
 
 if __name__ == "__main__":
     #v = Vertex('A')
@@ -126,6 +132,7 @@ if __name__ == "__main__":
     print(myGraph)
     print(A)
 
+    
     for v in myGraph:
         #print(v)
         #print(type(v))
@@ -133,7 +140,6 @@ if __name__ == "__main__":
             print("%s,%s,%d" % (v.id,connVertex,v.getWeight(connVertex)))
           
         
-    #Checking Edge Weight update     
     myGraph.addEdge('A','C',29)    
     
     for v in myGraph:
@@ -141,5 +147,12 @@ if __name__ == "__main__":
         #print(type(v))
         for connVertex in v.getConnections():
             print("%s,%s,%d" % (v.id,connVertex,v.getWeight(connVertex)))
-        
+
+    print ('Testing generator method getNextVertex() in Graph class. Executing method using next()')
+    a = myGraph.getNextVertex()
+    print(next(a))
+    print(next(a))      
+    print ('Testing generator method getNextVertex() in Graph class. Executing method using for loop')
+    for vertex in myGraph.getNextVertex():
+        print(vertex)
     
