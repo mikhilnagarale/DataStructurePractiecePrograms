@@ -1,5 +1,8 @@
 #!/usr/bin/python
-#Ref : http://interactivepython.org/courselib/static/pythonds/Graphs/Objectives.html
+
+#Ref Graph Terms & Implementation: http://interactivepython.org/courselib/static/pythonds/Graphs/Objectives.html
+#Ref Generator & it's usage: https://www.programiz.com/python-programming/generator
+
 #IMP Topics to cover-
 #Vertex/Node
 #Edge/Arc
